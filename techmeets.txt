@@ -4,3 +4,7 @@
 3333333333333
 html&css
 hello world !
+ああああああ
+git config --global user.name "<jojosuke0926>"
+git config --global user.email <jojosuke0926@gmail.com>
+git remote set-url origin https://<jojosuke0926>@github.com/<jojosuke0926>/<students>.git
