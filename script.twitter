@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>twitter.sample</title>
+</head>
+<body>
+  <div id="result"></div>
+	<div id="btn">START</div>
+	<a href="javascript:twitText()"><img src="twitter-a.png" alt="Send to twitter" width="61" height="23"></a>
+
+	<script>
+		var msg = 'Stop at 00:05!';
+
+	  (function() {
+	  	  'use strict';
+	  	  var isStarted = false;
+	  	  var startTime;
+	  	  var diff;
+
+	  	  var result = document.getElementById('result');
+	  	  var btn = document.getElementById('btn');
+
+	  	  result.innerHTML = msg;
+
+	  	  btn.addEventListener('click',function() {
+	  	  	if(!isStarted) {
+
+	  	  		isStarted = true;
+	  	  		this.innerHTML = 'STOP';
+
+	  	  		startTime = Date.now();
+	  	  		result.innerHTML = msg;
+	  	  	} else {
+
+	  	  		isStarted = false;
+	  	  		this.innerHTML = 'START';
+
+	  	  		diff = (Date.now() - startTime) / 1000;
+	  	  		    result.innerHTML = "You are" + diff.toFixed(2);
+	  	  	}
+	  	  });
+	  })();
+
+	  function twitText() {
+	  	var s, url;
+	  	s = document.getElementById("result").textContent;
+	  	url = document.location.href;
+	  	if(s !="") {
+	  		if(s.length > 140) {
+	  			//文字数制限
+	  			alert("テキストが140字をこえています");
+	  		} else {
+	  			//投稿画面
+	  			url = "http://twitter.com/share?url=" + escape(url) + "&text=" + s;
+	  			 window.open(url,"_blank","width=600,height=300");
+
+	  		}
+	  	}
+	  }
+	</script>
+</body>
+</html>
